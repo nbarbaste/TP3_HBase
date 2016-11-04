@@ -204,13 +204,15 @@ public class HBaseTest
             HBaseTest.createTable(tableName, families); // Create a table with the name and the column families defined
 
             Scanner sc = new Scanner(System.in);
-            int choice = 0; // Choice used for doing the REPL
+            int choice = 0; // Int used for doing the REPL
+            String recordName; // String used to get the name of the record is case 2
 
-            System.out.println("Welcome to FriendBook!\n");
+            System.out.println("Welcome to FriendBook!");
 
             while(choice != 4) // While the user doesn't want to quit the program
             {
-                System.out.println( "1 - Create a new user \n" +
+                System.out.println( "\n" +
+                                    "1 - Create a new user \n" +
                                     "2 - Show the record of an existing user \n" +
                                     "3 - Show the records of all existing users \n" +
                                     "4 - Exit FriendBook");
@@ -224,7 +226,7 @@ public class HBaseTest
 
                     case 2: System.out.println("Which record do you want to show?");
                             sc.reset();
-                            String recordName = sc.nextLine();
+                            recordName = sc.nextLine();
                             getOneRecord(tableName, recordName);
                         break;
 
