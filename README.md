@@ -2,4 +2,4 @@
 
 This repository contains the .java for the HBase TP (REPL)
 
-Command to execute the REPL on the cluster: yarn jar <JAR> HBaseTest
+Command to execute the REPL on the cluster: yarn jar TP3_HBase.jar HBaseTest
