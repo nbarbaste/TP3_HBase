@@ -94,7 +94,7 @@ public class HBaseTest
             put.add(Bytes.toBytes(family), Bytes.toBytes(qualifier), Bytes
                     .toBytes(value));
             table.put(put);
-            System.out.println("insert recored " + rowKey + " to table "
+            System.out.println("insert record " + rowKey + " to table "
                     + tableName + " ok.");
         }
         catch (IOException e)
@@ -114,7 +114,7 @@ public class HBaseTest
         Delete del = new Delete(rowKey.getBytes());
         list.add(del);
         table.delete(list);
-        System.out.println("del recored " + rowKey + " ok.");
+        System.out.println("del record " + rowKey + " ok.");
     }
 
     /**
@@ -207,15 +207,16 @@ public class HBaseTest
             int choice = 0; // Int used for doing the REPL
             String recordName; // String used to get the name of the record is case 2
 
-            System.out.println("Welcome to FriendBook!");
+            System.out.println("\n### Welcome to FriendBook! ###");
 
-            while(choice != 4) // While the user doesn't want to quit the program
+            while(choice != 5) // While the user doesn't want to quit the program
             {
                 System.out.println( "\n" +
-                        "1 - Create a new user \n" +
-                        "2 - Show the record of an existing user \n" +
-                        "3 - Show the records of all existing users \n" +
-                        "4 - Exit FriendBook");
+                                    "1 - Create a new user \n" +
+                                    "2 - Delete the record of an existing user" +
+                                    "3 - Show the record of an existing user \n" +
+                                    "4 - Show the records of all existing users \n" +
+                                    "5 - Exit FriendBook");
 
                 choice = sc.nextInt(); // Get the choice of the user
 
@@ -224,16 +225,22 @@ public class HBaseTest
                     case 1: newUser(tableName);
                         break;
 
-                    case 2: System.out.println("Which record do you want to show?");
-                        Scanner sc2 = new Scanner(System.in);
-                        recordName = sc2.nextLine();
-                        getOneRecord(tableName, recordName);
+                    case 2:System.out.println("Which record do you want to delete?");
+                            Scanner sc2 = new Scanner(System.in);
+                            recordName = sc2.nextLine();
+                            delRecord(tableName, recordName);
                         break;
 
-                    case 3: getAllRecord(tableName);
+                    case 3: System.out.println("Which record do you want to show?");
+                            Scanner sc3 = new Scanner(System.in);
+                            recordName = sc3.nextLine();
+                            getOneRecord(tableName, recordName);
                         break;
 
-                    case 4: System.out.println("See you soon on FriendBook!");
+                    case 4: getAllRecord(tableName);
+                        break;
+
+                    case 5: System.out.println("See you soon on FriendBook!");
                         break;
 
                     default: System.out.println("Invalid choice, please retry");
