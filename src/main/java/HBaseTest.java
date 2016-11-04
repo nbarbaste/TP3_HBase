@@ -49,7 +49,7 @@ public class HBaseTest
         {
             System.out.println("table already exists!");
         } else
-            {
+        {
             HTableDescriptor tableDesc = new HTableDescriptor(tableName);
             for (int i = 0; i < familys.length; i++)
             {
@@ -212,10 +212,10 @@ public class HBaseTest
             while(choice != 4) // While the user doesn't want to quit the program
             {
                 System.out.println( "\n" +
-                                    "1 - Create a new user \n" +
-                                    "2 - Show the record of an existing user \n" +
-                                    "3 - Show the records of all existing users \n" +
-                                    "4 - Exit FriendBook");
+                        "1 - Create a new user \n" +
+                        "2 - Show the record of an existing user \n" +
+                        "3 - Show the records of all existing users \n" +
+                        "4 - Exit FriendBook");
 
                 choice = sc.nextInt(); // Get the choice of the user
 
@@ -225,9 +225,9 @@ public class HBaseTest
                         break;
 
                     case 2: System.out.println("Which record do you want to show?");
-                            sc.reset();
-                            recordName = sc.nextLine();
-                            getOneRecord(tableName, recordName);
+                        Scanner sc2 = new Scanner(System.in);
+                        recordName = sc2.nextLine();
+                        getOneRecord(tableName, recordName);
                         break;
 
                     case 3: getAllRecord(tableName);
